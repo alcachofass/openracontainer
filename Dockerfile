@@ -22,5 +22,5 @@ USER openra
 
 WORKDIR /home/openra/
 
-CMD [ "/home/openra/launch-dedicated.sh" ]
+CMD [ "/home/openra/launch-dedicated.sh > /dev/null 2>&1" ]
 
