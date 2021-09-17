@@ -9,7 +9,7 @@ RUN ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && echo $TZ > /etc/timezone; 
 	apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv-keys 3FA7E0328081BFF6A14DA29AA6A19B38D3D831EF; \ 
 	echo "deb https://download.mono-project.com/repo/ubuntu stable-focal main" | tee /etc/apt/sources.list.d/mono-official-stable.list; \
 	apt update; \
-	apt install mono-complete mono-dbg msbuild make curl -y; \
+	apt install mono-devel mono-dbg msbuild make curl -y; \
 	useradd -d /home/openra -m -s /sbin/nologin openra; \
 	cd /home/openra; \
 	curl -L https://github.com/OpenRA/OpenRA/releases/download/release-20210321/OpenRA-release-20210321-source.tar.bz2 | tar xj; \
