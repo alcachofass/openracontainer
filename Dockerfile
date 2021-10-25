@@ -1,6 +1,8 @@
 FROM ubuntu:20.04
 
 ENV TZ=America/Los_Angeles
+ENV MOTD="Send issues or feedback to duffman91#4787 in #servers on the OpenRA Discord."
+ENV SOURCE="https://github.com/OpenRA/OpenRA/releases/download/release-20210321/OpenRA-release-20210321-source.tar.bz2"
 
 RUN ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && echo $TZ > /etc/timezone; \
 	apt update; \
@@ -12,10 +14,13 @@ RUN ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && echo $TZ > /etc/timezone; 
 	apt install mono-devel mono-dbg msbuild make curl -y; \
 	useradd -d /home/openra -m -s /sbin/nologin openra; \
 	cd /home/openra; \
-	curl -L https://github.com/OpenRA/OpenRA/releases/download/release-20210321/OpenRA-release-20210321-source.tar.bz2 | tar xj; \
-	make; \
+	curl -L $SOURCE | tar xj; \
+	make	
+
+RUN mkdir -p /home/openra/.config/openra/; \
+	echo $MOTD > /home/openra/.config/openra/motd.txt; \
 	chown -R openra:openra /home/openra/
-   
+
 EXPOSE 1234
 
 USER openra
