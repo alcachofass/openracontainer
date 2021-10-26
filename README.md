@@ -9,7 +9,7 @@ An OpenRA dedicated server running in a Docker Container. The goal of this proje
 
 ## Docker Actions:
 * docker build -t openracontainer .
-* docker run -it -p 1234:1234 -e Name="My Test Server" -e Mod=ra -e EnableSingleplayer="True" --name openra openracontainer
+* docker run -it -p 1234:1234 -e Name="My Test Server" -e Mod=ra -e EnableSingleplayer="True" -e MOTD="Some sample message." --name openra openracontainer
 
 ## Other
 https://github.com/OpenRA/OpenRA/wiki/Dedicated

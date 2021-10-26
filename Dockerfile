@@ -1,7 +1,7 @@
 FROM ubuntu:20.04
 
 ENV TZ=America/Los_Angeles
-ENV MOTD="Send issues or feedback to duffman91#4787 in #servers on the OpenRA Discord."
+ENV MOTD=""
 ENV SOURCE="https://github.com/OpenRA/OpenRA/releases/download/release-20210321/OpenRA-release-20210321-source.tar.bz2"
 
 RUN ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && echo $TZ > /etc/timezone; \
@@ -18,7 +18,7 @@ RUN ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && echo $TZ > /etc/timezone; 
 	make	
 
 RUN mkdir -p /home/openra/.config/openra/; \
-	echo $MOTD > /home/openra/.config/openra/motd.txt; \
+	sed -i '/^SupportDir=.*/a echo $MOTD > /home/openra/.config/openra/motd.txt' /home/openra/launch-dedicated.sh; \
 	chown -R openra:openra /home/openra/
 
 EXPOSE 1234
