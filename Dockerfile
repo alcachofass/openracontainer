@@ -17,7 +17,7 @@ RUN cd /home/openra; \
 
 RUN mkdir -p /home/openra/.config/openra/; \
 	sed -i '/^SupportDir=.*/a echo $MOTD > /home/openra/.config/openra/motd.txt' /home/openra/launch-dedicated.sh; \
-	chown -R openra:openra /home/openra/
+	chown -R openra:openra /home/openra/;
 
 EXPOSE 1234
 
