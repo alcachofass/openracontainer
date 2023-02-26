@@ -5,7 +5,7 @@ ENV SOURCE="https://github.com/OpenRA/OpenRA/releases/download/release-20230225/
 ENV NAME="OpenRA-release-20230225-source"
 
 RUN apt update -y; \
-	apt install gnupg ca-certificates bzip2 make curl dotnet-sdk-6.0 -y; \
+	apt install bzip2 make curl dotnet-sdk-6.0 -y; \
 	useradd -d /home/openra -m -s /sbin/nologin openra; 
 
 RUN cd /home/openra; \
