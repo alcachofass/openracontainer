@@ -1,21 +1,19 @@
-FROM ubuntu:20.04
+FROM ubuntu:22.04
 
-ENV TZ=America/Los_Angeles
 ENV MOTD=""
-ENV SOURCE="https://github.com/OpenRA/OpenRA/releases/download/release-20210321/OpenRA-release-20210321-source.tar.bz2"
+ENV SOURCE="https://github.com/OpenRA/OpenRA/releases/download/release-20230225/OpenRA-release-20230225-source.tar.bz2"
+ENV NAME="OpenRA-release-20230225-source"
 
-RUN ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && echo $TZ > /etc/timezone; \
-	apt update; \
-	apt upgrade -y; \
-	apt install gnupg ca-certificates -y; \
-	apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv-keys 3FA7E0328081BFF6A14DA29AA6A19B38D3D831EF; \ 
-	echo "deb https://download.mono-project.com/repo/ubuntu stable-focal main" | tee /etc/apt/sources.list.d/mono-official-stable.list; \
-	apt update; \
-	apt install mono-devel mono-dbg msbuild make curl -y; \
-	useradd -d /home/openra -m -s /sbin/nologin openra; \
-	cd /home/openra; \
-	curl -L $SOURCE | tar xj; \
-	make	
+RUN apt update -y; \
+	apt install gnupg ca-certificates bzip2 make curl dotnet-sdk-6.0 -y; \
+	useradd -d /home/openra -m -s /sbin/nologin openra; 
+
+RUN cd /home/openra; \
+	curl -JLO $SOURCE; \
+	bzip2 -d $NAME.tar.bz2; \
+	tar xvf $NAME.tar; \
+	make; \
+	rm $NAME.* -f; 
 
 RUN mkdir -p /home/openra/.config/openra/; \
 	sed -i '/^SupportDir=.*/a echo $MOTD > /home/openra/.config/openra/motd.txt' /home/openra/launch-dedicated.sh; \

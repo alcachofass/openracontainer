@@ -1,11 +1,9 @@
 # openracontainer
-An OpenRA dedicated server running in a Docker Container. The goal of this project is to use the latest mono packages while lowering the overall image size. This image is about 300 MB smaller than current ones in Docker Hub. 
+An OpenRA dedicated server running in a container. The goal of this project is to use the latest packages while lowering the overall image size. 
 
 ## Notes
-* The time zone is set on the container in order to avoid issues updating the tzdata package during build.
-* The official mono repository is used to avoid build issues with the latest release. It also addresses the missing "msbuild" package from Ubuntu repositories.  
-* Ubuntu 20.04 used for compatibility with the mono repo.
-* OpenRA.net Release 20210321.
+* Ubuntu 22.04 used with the dotnet-sdk-6.0
+* OpenRA.net release-20230225.
 
 ## Docker Actions:
 * docker build -t openracontainer .
