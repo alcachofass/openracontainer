@@ -3,7 +3,7 @@ An OpenRA dedicated server running in a container. The goal of this project is t
 
 ## Notes
 * Ubuntu 22.04 used with the dotnet-sdk-6.0
-* OpenRA.net release-20230225.
+* OpenRA.net release-20231010.
 
 ## Docker Actions:
 * docker build -t openracontainer .
