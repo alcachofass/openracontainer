@@ -1,8 +1,8 @@
 FROM ubuntu:22.04
 
 ENV MOTD=""
-ENV SOURCE="https://github.com/OpenRA/OpenRA/releases/download/release-20230225/OpenRA-release-20230225-source.tar.bz2"
-ENV NAME="OpenRA-release-20230225-source"
+ENV SOURCE="https://github.com/OpenRA/OpenRA/releases/download/release-20231010/OpenRA-release-20231010-source.tar.bz2"
+ENV NAME="OpenRA-release-20231010-source"
 
 RUN apt update -y; \
 	apt install bzip2 make curl dotnet-sdk-6.0 -y; \
