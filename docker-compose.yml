@@ -1,0 +1,11 @@
+services:
+  openra_service:
+    image: alcachofass/openracontainer
+    restart: always
+    ports:
+      - "1234:1234/tcp"
+    environment:
+      - Name="My OpenRA Container"
+      - EnableSingleplayer=True
+      - Mod=ra
+      - MOTD="Welcome to my server!"
