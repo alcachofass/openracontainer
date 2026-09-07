@@ -1,6 +1,9 @@
 services:
   openra_service:
-    image: alcachofass/openracontainer
+    image: openracontainer
+    build:
+      context: .
+      dockerfile: Dockerfile
     restart: always
     ports:
       - "1234:1234/tcp"

@@ -6,8 +6,8 @@ An OpenRA dedicated server running in a container. The goal of this project is t
 * OpenRA.net release-20250330.
 
 ## Docker Actions:
-* docker build -t openracontainer .
-* docker run -it -p 1234:1234 -e Name="My Test Server" -e Mod=ra -e EnableSingleplayer="True" -e MOTD="Some sample message." --name openra openracontainer
+* docker compose build
+* docker compose up
 
 ## Other
 https://github.com/OpenRA/OpenRA/wiki/Dedicated
